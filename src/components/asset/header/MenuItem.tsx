@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import colors from "../../../constants/colors";
 interface MenuItemProps {
   title: string;
   other?: {
@@ -16,10 +16,10 @@ function MenuItem({ title, other }: MenuItemProps) {
       <span>{title}</span>
       <div>
         {other?.map((data) => (
-          <div>
+          <Other>
               <div>{data.title}</div>
-              <div>{data.text}</div>
-              </div>
+              <p>{data.text}</p>
+              </Other>
         ))}
       </div>
     </Wrap>
@@ -85,5 +85,26 @@ const Wrap = styled.div`
   &>div{
       display:none;
   }
+`;
+
+const Other= styled.div`
+display: flex;
+flex-direction: column;
+/* padding:10px 20px; */
+&>div{
+    font-family: "Google Sans", sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      &:hover{
+          color:${colors.primary};
+      }
+}
+
+&>p{
+    font-size: 13px;
+    font-weight: 400;
+    font-family: "Roboto",sans-serif;
+    margin:0px;
+}
 `;
 export default MenuItem;
